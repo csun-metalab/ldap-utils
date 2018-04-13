@@ -37,7 +37,7 @@ source $CONF_PATH
 LDAP_INITIAL=`ldapsearch -LLL -P $LDAP_VERSION -H $LDAP_HOST -b $LDAP_BASE_DN -D $LDAP_BIND_DN -w $LDAP_BIND_PW -x uid=$LDAP_SEARCH_UID dn`
 
 # Check response code
-if [ ! "$#" -eq "0" ]; then
+if [ ! "$?" -eq "0" ]; then
    echo "Could not perform the initial bind using $LDAP_BIND_DN"
    exit $E_INITIAL_BIND
 fi
@@ -57,7 +57,7 @@ LDAP_SEARCH_DN=${LDAP_INITIAL#dn: }
 LDAP_SECOND=`ldapsearch -LLL -P $LDAP_VERSION -H $LDAP_HOST -b $LDAP_BASE_DN -D $LDAP_SEARCH_DN -w $LDAP_SEARCH_PW -x uid=$LDAP_SEARCH_UID dn`
 
 # Check response code
-if [ ! "$#" -eq "0" ]; then
+if [ ! "$?" -eq "0" ]; then
    echo "Could perform the second bind using $LDAP_SEARCH_DN"
    exit $E_SECOND_BIND
 fi
