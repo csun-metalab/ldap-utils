@@ -54,7 +54,7 @@ LDAP_SEARCH_DN=${LDAP_INITIAL#dn: }
 
 # Now perform the second bind with the generated DN from the search UID; it will
 # just perform a self-search for simplicity
-LDAP_SECOND=`ldapsearch -LLL -H $LDAP_HOST -b $LDAP_BASE_DN -D $LDAP_SEARCH_DN -w $LDAP_SEARCH_PW -x uid=$LDAP_SEARCH_UID dn`
+LDAP_SECOND=`ldapsearch -LLL -P $LDAP_VERSION -H $LDAP_HOST -b $LDAP_BASE_DN -D $LDAP_SEARCH_DN -w $LDAP_SEARCH_PW -x uid=$LDAP_SEARCH_UID dn`
 
 # Check response code
 if [ ! "$#" -eq "0" ]; then
