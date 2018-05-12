@@ -58,7 +58,7 @@ LDAP_SECOND=`ldapsearch -LLL -P $LDAP_VERSION -H $LDAP_HOST -b $LDAP_BASE_DN -D 
 
 # Check response code
 if [ ! "$?" -eq "0" ]; then
-   echo "Could perform the second bind using $LDAP_SEARCH_DN"
+   echo "Could not perform the second bind using $LDAP_SEARCH_DN"
    exit $E_SECOND_BIND
 fi
 
